@@ -68,7 +68,7 @@ exports.updateTask = async (req, res) => {
         }, {
             $set: {
                 name: req.body.name,
-                deadline: new Date(req.body.deadline),
+                deadline: req.body.deadline ? new Date(req.body.deadline) : '',
                 done: req.body.done,
                 subtasks: req.body.subtasks
             } 
