@@ -5,6 +5,14 @@ const usersController = require('./controllers/UsersController')
 const tasksController = require('./controllers/TasksController')
 
 
+router.get('/test', (req, res) => {
+    console.log(req)
+    res.json({
+        lol: 'lol'
+    })
+})
+
+
 router.post('/login',
     usersController.loginValidate,
     usersController.checkValidation,
