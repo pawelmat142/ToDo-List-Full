@@ -57,7 +57,9 @@ exports.login = async (req, res) => {
         const isPasswordOk = bcrypt.compareSync(req.body.password, user.password)
         if (!isPasswordOk) throw new Error('Błędne hasło')
 
-        const token = jwt.sign({id: user.id}, process.env.ACCESS_TOKEN, {expiresIn: jwtExpireTime})
+        // JWT TOKEN SET NEVER EXPIRES
+        const token = jwt.sign({id: user.id}, process.env.ACCESS_TOKEN)
+        // const token = jwt.sign({id: user.id}, process.env.ACCESS_TOKEN, {expiresIn: jwtExpireTime})
         res.status(200).json(token)
 
     } catch (error) { 
